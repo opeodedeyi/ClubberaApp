@@ -5,7 +5,7 @@ import React from 'react';
 
 
 type ButtonSize = 'defaultSize' | 'normalSize' | 'buttonNoButtonSize' | 'fullWidthSize' | 'formHeaderSize' | 'tableButtonSize' | 'backSize';
-type ButtonColoring = 'defaultColoring' | 'inverseColoring' | 'googleColoring';
+type ButtonColoring = 'defaultColoring' | 'inverseColoring' | 'googleColoring' | 'buttonNoButtonColoring';
 
 interface CustomButtonProps {
     size?: ButtonSize;
@@ -110,6 +110,16 @@ const styles = StyleSheet.create({
         fontFamily: 'GTWalsheimProRegular',
         fontWeight: '400',
         color: Colors.colorDarkTwo,
+    },
+
+    buttonNoButtonColoring: {
+        backgroundColor: 'transparent',
+    },
+
+    buttonNoButtonColoringText: {
+        fontFamily: 'GTWalsheimProRegular',
+        fontWeight: '400',
+        color: Colors.colorGrayTwo,
     },
 
     googleColoring: {

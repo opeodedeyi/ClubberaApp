@@ -1,6 +1,6 @@
 # Project Name
 
-[Project description]
+[Clubbera mobile application built for both IOS and Android using React Native Expo.]
 
 ## Table of Contents
 
@@ -35,3 +35,7 @@
 - [git add .](#gitadd)
 - [git commit -m "any comment"](#Initialcommit)
 - [git push -u origin master](#gitpush)
+
+## Installation
+
+[npx expo start]

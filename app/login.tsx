@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import { View, StyleSheet, ScrollView } from 'react-native';
 import Logo from '@/Components/Utility/Logo';
 import CustomButton from '@/Components/Utility/CustomButton';
 import MainInput from '@/Components/Inputs/MainInput';

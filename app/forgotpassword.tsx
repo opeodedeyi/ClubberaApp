@@ -1,8 +1,7 @@
-import { View, Text, StyleSheet, ScrollView, Image } from 'react-native';
+import { View, StyleSheet, ScrollView, Image } from 'react-native';
 import Logo from '@/Components/Utility/Logo';
 import CustomButton from '@/Components/Utility/CustomButton';
 import MainInput from '@/Components/Inputs/MainInput';
-import PasswordInput from '@/Components/Inputs/PasswordInput';
 import Colors from '@/constants/Colors';
 import React, { useState } from 'react';
 import { Link } from 'expo-router';

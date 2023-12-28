@@ -4,21 +4,14 @@ import Colors from '@/constants/Colors';
 import { useState } from 'react';
 
 
-type KeyTypeOptions = 'default' | 'number-pad' | 'decimal-pad' | 'numeric' | 'email-address' | 'phone-pad' | 'url';
-type AutoCompleteOptions = 'username' | 'email' | 'name' | 'tel' | 'street-address' | 'postal-code';
-type AutoCapitalizeOptions = 'none' | 'sentences' | 'words' | 'characters';
-
 interface MainInputProps {
     placeholder?: string;
-    keyboardType?: KeyTypeOptions;
     label?: string;
     value: string;
     setValue: any;
-    autoComplete?: AutoCompleteOptions;
-    autoCapitalize?: AutoCapitalizeOptions;
 }
 
-const MainInput: React.FC<MainInputProps> = ({ placeholder, keyboardType, label, value, setValue, autoComplete, autoCapitalize }) => {
+const MainInput: React.FC<MainInputProps> = ({ placeholder, label, value, setValue }) => {
     const [focused, setFocused] = useState(false);
 
     return (
@@ -29,11 +22,10 @@ const MainInput: React.FC<MainInputProps> = ({ placeholder, keyboardType, label,
                 placeholder={placeholder}
                 value={value}
                 onChangeText={(text) => setValue(text)}
-                keyboardType={keyboardType}
-                autoComplete={autoComplete}
-                autoCapitalize={autoCapitalize}
+                keyboardType='default'
                 onFocus={() => setFocused(true)}
                 onBlur={() => setFocused(false)}
+                multiline={true}
             />
         </View>
     );
@@ -56,9 +48,9 @@ const styles = StyleSheet.create({
 
     input: {
         color: Colors.colorTextInput,
-        height: 45,
+        minHeight: 135,
         width: '100%',
-        paddingVertical: 6,
+        paddingVertical: 14,
         paddingHorizontal: 16,
         fontFamily: 'GTWalsheimProRegular',
         fontWeight: '400',
@@ -68,6 +60,7 @@ const styles = StyleSheet.create({
         fontSize: 14,
         lineHeight: 18.9,
         letterSpacing: -0.28,
+        textAlignVertical: 'top',
     },
 });
 
