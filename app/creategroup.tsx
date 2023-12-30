@@ -4,13 +4,15 @@ import CustomButton from '@/Components/Utility/CustomButton';
 import MainTip from '@/Components/Utility/MainTip';
 import MainInput from '@/Components/Inputs/MainInput';
 import MainTextarea from '@/Components/Inputs/MainTextarea';
+import BinaryOptionInput from '@/Components/Inputs/BinaryOptionInput';
+import SingleImageUploadInput from '@/Components/Inputs/SingleImageUploadInput';
 import CustomTag from '@/Components/Inputs/CustomTag';
 import Colors from '@/constants/Colors';
 import WelcomeSvg from '@/Components/Svg/WelcomeSvg';
 import CommunityCreatedSvg from '@/Components/Svg/CommunityCreatedSvg';
 import React, { useState, useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { Link, router } from 'expo-router';
+import { router } from 'expo-router';
 import { AppText } from '@/Components/Utility/AppText';
 
 
@@ -39,14 +41,15 @@ interface StepThreeProps {
 }
 
 interface StepFourProps {
-    boolValue: boolean | null;
+    boolValue: any;
     setBoolValue: any;
-    selectedImage: any;
-    setSelectedImage: any;
+    image: any;
+    setImage: any;
     imageName: string;
     setImageName: any;
     imageSize: string;
     setImageSize: any;
+    deleteImage: () => void;
 }
 
 interface FinishStepProps {
@@ -149,14 +152,26 @@ const CreateGroupStepThree: React.FC<StepThreeProps> = ({ groupTitle, setGroupTi
     )
 }
 
-const CreateGroupStepFour: React.FC<StepFourProps> = ({ boolValue, setBoolValue, selectedImage, setSelectedImage, imageName, setImageName, imageSize, setImageSize }) => {
+const CreateGroupStepFour: React.FC<StepFourProps> = ({ boolValue, setBoolValue, image, setImage, imageName, setImageName, imageSize, setImageSize, deleteImage }) => {
     return (
         <View style={styles.childContainer}>
             <View style={styles.childContainerText}>
                 <Text style={styles.MainTextTitle}>Complete setup</Text>
                 <AppText style={styles.MainTextSub}>Configure the privacy settings and upload an image that best describes your group.</AppText>
             </View>
-            <View style={styles.childContainerForm}></View>
+            <View style={styles.childContainerForm}>
+                <BinaryOptionInput truthyPlaceholder="Private" falseyPlaceholder="Public" boolValue={boolValue} setBoolValue={setBoolValue}>Is this group a Private or Public Group?</BinaryOptionInput>
+                <SingleImageUploadInput
+                    image={image}
+                    setImage={setImage}
+                    imageName={imageName}
+                    setImageName={setImageName}
+                    imageSize={imageSize}
+                    setImageSize={setImageSize}
+                    deleteImage={deleteImage}>
+                        Upload image
+                </SingleImageUploadInput>
+            </View>
         </View>
     )
 }
@@ -190,7 +205,7 @@ const creategroup = () => {
     const [groupDescription, setGroupDescription] = useState("");
     const [selectedTopics, setSelectedTopics] = useState([]);
     const [isPrivate, setIsPrivate] = useState(null);
-    const [selectedImage, setSelectedImage] = useState(null);
+    const [image, setImage] = useState(null);
     const [imageName, setImageName] = useState('');
     const [imageSize, setImageSize] = useState('');
 
@@ -213,6 +228,12 @@ const creategroup = () => {
             router.push("/")
         }
     };
+
+    const deleteImage = async () => {
+        setImage(null);
+        setImageName('');
+        setImageSize('');
+    }
 
     const disableNextPage = () => {
         switch (step) {
@@ -254,12 +275,13 @@ const creategroup = () => {
                         {step === 4 && <CreateGroupStepFour
                                             boolValue={isPrivate}
                                             setBoolValue={setIsPrivate}
-                                            selectedImage={selectedImage}
-                                            setSelectedImage={setSelectedImage}
+                                            image={image}
+                                            setImage={setImage}
                                             imageName={imageName}
                                             setImageName={setImageName}
                                             imageSize={imageSize}
-                                            setImageSize={setImageSize} />}
+                                            setImageSize={setImageSize}
+                                            deleteImage={deleteImage} />}
                         {step === 5 && <FinishStep 
                                             onPress={handleNext}
                                             groupTitle={groupTitle} />}
