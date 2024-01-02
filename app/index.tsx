@@ -177,7 +177,7 @@ const index = () => {
                                     <Text style={styles.tagLine}>Create a <Text style={styles.italicNantes}>group</Text></Text>
                                     <AppText style={styles.slogan}>Start today by creating your dynamic and perfect group.</AppText>
                                 </View>
-                                <CustomButton onPress={() => router.push("/login")} size="normalSize" coloring="defaultColoring">Create group</CustomButton>
+                                <CustomButton onPress={() => router.push("/group/manga-readers")} size="normalSize" coloring="defaultColoring">Create group</CustomButton>
                             </View>
                             
                             <HorizontalDeck/>
@@ -319,7 +319,6 @@ const styles = StyleSheet.create({
     },
 
     WorkCardContainer: {
-        // position: 'relative',
         backgroundColor: Colors.colorWhite,
         borderRadius: 2,
         overflow: 'hidden',
@@ -366,8 +365,6 @@ const styles = StyleSheet.create({
         top: 0,
         left: 0,
         resizeMode: 'contain',
-        // width: '100%',
-        // height: '100%',
     },
 
     workCardTitle: {

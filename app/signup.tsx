@@ -43,57 +43,64 @@ const Signup = () => {
   const isDisabled = !fullname || !email || !password || !isEmailValid(email) || !isPasswordValid(password);
 
   return (
-    <ScrollView>
-      <View style={styles.container}>
-        <View style={styles.mainContainer}>
-          {page === 1 ? (
-            <View style={styles.mainContent}>
-              <Logo clickable={false}/>
-              <View style={styles.textsCotainer}>
-                <AppText style={styles.normalTitle}>Join the adventure</AppText>
-                <AppText style={styles.normalText}>Sign up to connect with like-minded individuals and embark on exciting journeys together.</AppText>
+    <View style={styles.fullFlex}>
+      <ScrollView>
+        <View style={styles.container}>
+          <View style={styles.mainContainer}>
+            {page === 1 ? (
+              <View style={styles.mainContent}>
+                <Logo clickable={false}/>
+                <View style={styles.textsCotainer}>
+                  <AppText style={styles.normalTitle}>Join the adventure</AppText>
+                  <AppText style={styles.normalText}>Sign up to connect with like-minded individuals and embark on exciting journeys together.</AppText>
+                </View>
+                <CustomButton onPress={googleLoginPress} size="fullWidthSize" coloring="googleColoring" showGoogleSVG>Login with Google</CustomButton>
+                <View style={styles.orCotainer}>
+                  <View style={styles.orLine}></View>
+                  <AppText style={styles.orText}>or</AppText>
+                  <View style={styles.orLine}></View>
+                </View>
+                <View style={styles.authFormItems}>
+                  <MainInput placeholder="Enter full name" keyboardType="default" label="Full name" value={fullname} setValue={setFullame} autoComplete="name" />
+                  <MainInput placeholder="Enter email address" keyboardType="email-address" label="Email address" value={email} setValue={setEmail} autoComplete="email" autoCapitalize="none" />
+                  <PasswordInput placeholder="Enter password" label="Password" value={password} setValue={setPassword} />
+                </View>
               </View>
-              <CustomButton onPress={googleLoginPress} size="fullWidthSize" coloring="googleColoring" showGoogleSVG>Login with Google</CustomButton>
-              <View style={styles.orCotainer}>
-                <View style={styles.orLine}></View>
-                <AppText style={styles.orText}>or</AppText>
-                <View style={styles.orLine}></View>
-              </View>
-              <View style={styles.authFormItems}>
-                <MainInput placeholder="Enter full name" keyboardType="default" label="Full name" value={fullname} setValue={setFullame} autoComplete="name" />
-                <MainInput placeholder="Enter email address" keyboardType="email-address" label="Email address" value={email} setValue={setEmail} autoComplete="email" autoCapitalize="none" />
-                <PasswordInput placeholder="Enter password" label="Password" value={password} setValue={setPassword} />
-              </View>
-            </View>
-          ) : (
-            <View style={styles.mainContent}>
-              <View style={styles.textsCotainer}>
-                <AppText style={styles.normalTitle}>Finish signing up</AppText>
-                <AppText style={styles.normalText}>We just need a few information from you and your account will be all set up.</AppText>
-              </View>
-              <View style={styles.authFormItems}>
+            ) : (
+              <View style={styles.mainContent}>
+                <View style={styles.textsCotainer}>
+                  <AppText style={styles.normalTitle}>Finish signing up</AppText>
+                  <AppText style={styles.normalText}>We just need a few information from you and your account will be all set up.</AppText>
+                </View>
+                <View style={styles.authFormItems}>
 
+                </View>
               </View>
-            </View>
-          )}
+            )}
 
-          <View style={styles.links}>
-              <CustomButton onPress={handlePress} size="fullWidthSize" coloring="defaultColoring" isDisabled={isDisabled}>{ page === 1 ? "Continue" : "Get started" }</CustomButton>
-              {page === 1 ? (
-                <AppText style={styles.normalText}>Already a member? <Link href="/login" style={styles.linkStyle}>Login</Link></AppText>
-              ) : (
-                <AppText style={styles.altText}>By signing up, you agree to <Link href="/" style={styles.altLinkStyle}>Terms of Service,</Link> <Link href="/" style={styles.altLinkStyle}>Privacy Policy,</Link> and <Link href="/" style={styles.altLinkStyle}>Cookie Policy.</Link></AppText>
-              )}
-              
+            <View style={styles.links}>
+                <CustomButton onPress={handlePress} size="fullWidthSize" coloring="defaultColoring" isDisabled={isDisabled}>{ page === 1 ? "Continue" : "Get started" }</CustomButton>
+                {page === 1 ? (
+                  <AppText style={styles.normalText}>Already a member? <Link href="/login" style={styles.linkStyle}>Login</Link></AppText>
+                ) : (
+                  <AppText style={styles.altText}>By signing up, you agree to <Link href="/" style={styles.altLinkStyle}>Terms of Service,</Link> <Link href="/" style={styles.altLinkStyle}>Privacy Policy,</Link> and <Link href="/" style={styles.altLinkStyle}>Cookie Policy.</Link></AppText>
+                )}
+                
+            </View>
           </View>
         </View>
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </View>
   )
 }
 
 
 const styles = StyleSheet.create({
+  fullFlex: {
+    flex: 1,
+    backgroundColor: Colors.colorWhite,
+  },
+
   container: {
     width: '100%',
     justifyContent: 'center',

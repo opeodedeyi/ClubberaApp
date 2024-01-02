@@ -15,6 +15,7 @@ export default {
   colorWhiteSix: '#F3F3F3',
   colorWhiteSeven: '#EAEAEA',
   colorWhiteEight: '#FFF5F5',
+  colorWhiteNine: '#F9F9F9',
   colorDark: '#241F1F',
   colorDarkOne: '#4D4A4A',
   colorDarkTwo: '#625F5F',

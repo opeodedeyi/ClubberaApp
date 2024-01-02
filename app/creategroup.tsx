@@ -89,7 +89,6 @@ const CreateGroupStepOne: React.FC<StepOneProps> = ({ fullName, setFullName }) =
             </View>
         </View>
     )
-
 }
 
 const CreateGroupStepTwo: React.FC<StepTwoProps> = ({ presetTopics, setPresetTopics, selectedTopics, setSelectedTopics }) => {
@@ -251,7 +250,7 @@ const creategroup = () => {
     };
 
     return (
-        <View>
+        <View style={styles.fullFlex}>
             <CreateHeader onPress={handleBackPress} progress={step}/>
             <ScrollView>
                 <View style={styles.overallContainer}>
@@ -303,6 +302,11 @@ const creategroup = () => {
 }
 
 const styles = StyleSheet.create({
+    fullFlex: {
+        flex: 1,
+        backgroundColor: Colors.colorWhite,
+    },
+
     overallContainer: {
         width: '100%',
         justifyContent: 'center',

@@ -38,38 +38,45 @@ const Login: React.FC = (): React.ReactElement => {
     const isDisabled = !email || !password || !isEmailValid(email) || !isPasswordValid(password);
 
     return (
-        <ScrollView>
-            <View style={styles.container}>
-                <View style={styles.mainContainer}>
-                    <View style={styles.mainContent}>
-                        <Logo clickable={false}/>
-                        <View style={styles.textsCotainer}>
-                            <AppText style={styles.normalTitle}>Welcome back</AppText>
-                            <AppText style={styles.normalText}>Ready to reconnect with friends? Login to resume discovery of  new experiences together.</AppText>
+        <View style={styles.fullFlex}>
+            <ScrollView>
+                <View style={styles.container}>
+                    <View style={styles.mainContainer}>
+                        <View style={styles.mainContent}>
+                            <Logo clickable={false}/>
+                            <View style={styles.textsCotainer}>
+                                <AppText style={styles.normalTitle}>Welcome back</AppText>
+                                <AppText style={styles.normalText}>Ready to reconnect with friends? Login to resume discovery of  new experiences together.</AppText>
+                            </View>
+                            <CustomButton onPress={googleLoginPress} size="fullWidthSize" coloring="googleColoring" showGoogleSVG>Login with Google</CustomButton>
+                            <View style={styles.orCotainer}>
+                                <View style={styles.orLine}></View>
+                                <AppText style={styles.orText}>or</AppText>
+                                <View style={styles.orLine}></View>
+                            </View>
+                            <View style={styles.authFormItems}>
+                                <MainInput placeholder="Enter email address" keyboardType="email-address" label="Email address" value={email} setValue={setEmail} autoComplete="email" autoCapitalize="none" />
+                                <PasswordInput placeholder="Enter password" label="Password" value={password} setValue={setPassword} forgotPassword/>
+                            </View>
                         </View>
-                        <CustomButton onPress={googleLoginPress} size="fullWidthSize" coloring="googleColoring" showGoogleSVG>Login with Google</CustomButton>
-                        <View style={styles.orCotainer}>
-                            <View style={styles.orLine}></View>
-                            <AppText style={styles.orText}>or</AppText>
-                            <View style={styles.orLine}></View>
-                        </View>
-                        <View style={styles.authFormItems}>
-                            <MainInput placeholder="Enter email address" keyboardType="email-address" label="Email address" value={email} setValue={setEmail} autoComplete="email" autoCapitalize="none" />
-                            <PasswordInput placeholder="Enter password" label="Password" value={password} setValue={setPassword} forgotPassword/>
-                        </View>
-                    </View>
 
-                    <View style={styles.links}>
-                        <CustomButton onPress={handlePress} size="fullWidthSize" coloring="defaultColoring" isDisabled={isDisabled}>Login</CustomButton>
-                        <AppText style={styles.normalText}>Not a member yet? <Link href="/signup" style={styles.linkStyle}>Sign up now</Link></AppText>
+                        <View style={styles.links}>
+                            <CustomButton onPress={handlePress} size="fullWidthSize" coloring="defaultColoring" isDisabled={isDisabled}>Login</CustomButton>
+                            <AppText style={styles.normalText}>Not a member yet? <Link href="/signup" style={styles.linkStyle}>Sign up now</Link></AppText>
+                        </View>
                     </View>
                 </View>
-            </View>
-        </ScrollView>
+            </ScrollView>
+        </View>
     )
 }
 
 const styles = StyleSheet.create({
+    fullFlex: {
+        flex: 1,
+        backgroundColor: Colors.colorWhite,
+    },
+
     container: {
         width: '100%',
         justifyContent: 'center',

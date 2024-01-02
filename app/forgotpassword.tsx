@@ -29,46 +29,53 @@ const forgotpassword = () => {
   const isDisabled = !email || !isEmailValid(email);
 
   return (
-    <ScrollView>
-      <View style={styles.container}>
-        <View style={styles.mainContainer}>
-          {page === 1 ? (
-            <View style={styles.mainContent}>
-              <Logo clickable={false}/>
-              <View style={styles.textsCotainer}>
-                <AppText style={styles.normalTitle}>Forgot password?</AppText>
-                <AppText style={styles.normalText}>We will send you a mail to reset your password</AppText>
+    <View style={styles.fullFlex}>
+      <ScrollView>
+        <View style={styles.container}>
+          <View style={styles.mainContainer}>
+            {page === 1 ? (
+              <View style={styles.mainContent}>
+                <Logo clickable={false}/>
+                <View style={styles.textsCotainer}>
+                  <AppText style={styles.normalTitle}>Forgot password?</AppText>
+                  <AppText style={styles.normalText}>We will send you a mail to reset your password</AppText>
+                </View>
+                <View style={styles.authFormItems}>
+                  <MainInput placeholder="Enter email address" keyboardType="email-address" label="Email address" value={email} setValue={setEmail} autoComplete="email" autoCapitalize="none" />
+                </View>
               </View>
-              <View style={styles.authFormItems}>
-                <MainInput placeholder="Enter email address" keyboardType="email-address" label="Email address" value={email} setValue={setEmail} autoComplete="email" autoCapitalize="none" />
+            ) : (
+              <View style={styles.mainContent}>
+                <View style={styles.textsCotainerAlt}>
+                  <AppText style={styles.normalTitleAlt}>Email sent!</AppText>
+                  <AppText style={styles.normalTextAlt}>We sent an email to your email address. Follow the steps provided in your email to update your password.</AppText>
+                </View>
+                <View style={styles.authImageCenter}>
+                <Image source={require('@/assets/images/email_sent.png')} style={styles.authImageCenterImage} resizeMode="contain"/>
+                </View>
               </View>
-            </View>
-          ) : (
-            <View style={styles.mainContent}>
-              <View style={styles.textsCotainerAlt}>
-                <AppText style={styles.normalTitleAlt}>Email sent!</AppText>
-                <AppText style={styles.normalTextAlt}>We sent an email to your email address. Follow the steps provided in your email to update your password.</AppText>
-              </View>
-              <View style={styles.authImageCenter}>
-              <Image source={require('@/assets/images/email_sent.png')} style={styles.authImageCenterImage} resizeMode="contain"/>
-              </View>
-            </View>
-          )}
+            )}
 
-          <View style={styles.links}>
-              <CustomButton onPress={handlePress} size="fullWidthSize" coloring="defaultColoring" isDisabled={isDisabled}>{ page === 1 ? "Send email" : "Check email" }</CustomButton>
-              {page === 1 &&
-                <AppText style={styles.normalText}>Didn’t forget password? <Link href="/login" style={styles.linkStyle}>Login</Link></AppText>
-              }
+            <View style={styles.links}>
+                <CustomButton onPress={handlePress} size="fullWidthSize" coloring="defaultColoring" isDisabled={isDisabled}>{ page === 1 ? "Send email" : "Check email" }</CustomButton>
+                {page === 1 &&
+                  <AppText style={styles.normalText}>Didn’t forget password? <Link href="/login" style={styles.linkStyle}>Login</Link></AppText>
+                }
+            </View>
           </View>
         </View>
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </View>
   )
 }
 
 
 const styles = StyleSheet.create({
+  fullFlex: {
+    flex: 1,
+    backgroundColor: Colors.colorWhite,
+  },
+
   container: {
     width: '100%',
     justifyContent: 'center',

@@ -2,7 +2,6 @@ import { SplashScreen, Stack } from 'expo-router';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import CustomHeader from '../Components/CustomHeader';
 import AuthHeader from '../Components/AuthHeader';
-import CreateHeader from '../Components/CreateHeader';
 import React, { useEffect } from 'react';
 import { useFonts } from 'expo-font';
 import { StatusBar } from "react-native";
@@ -70,6 +69,12 @@ function RootLayoutNav() {
           name="creategroup" 
           options={{
             headerShown: false,
+          }} />
+
+        <Stack.Screen 
+          name="group/[uniqueURL]" 
+          options={{
+            header: () => <CustomHeader />,
           }} />
       </Stack>
     </SafeAreaProvider>
